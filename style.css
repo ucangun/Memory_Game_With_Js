@@ -72,10 +72,10 @@ img:hover {
 }
 
 .close {
-  visibility: hidden;
+  opacity: 0;
 }
 .open {
-  visibility: visible;
+  opacity: 100;
 }
 
 .again-box {
@@ -90,4 +90,8 @@ img:hover {
 
 .none {
   display: none;
+}
+
+.block {
+  display: block;
 }
