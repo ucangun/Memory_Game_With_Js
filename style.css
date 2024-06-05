@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap");
+
+body {
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460, #53354a);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  color: white;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+h1 {
+  font-family: "Merienda", cursive;
+  font-optical-sizing: auto;
+  font-size: 1.5rem !important ;
+  animation: movement 15s alternate infinite;
+}
+
+@keyframes movement {
+  0% {
+    transform: translateX(-100px);
+  }
+  50% {
+    transform: translateX(100px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.score-box {
+  font-family: "Merienda", cursive;
+
+  font-size: 2rem !important ;
+}
+
+img {
+  width: 8rem;
+  height: 8rem;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+  overflow: hidden;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col {
+  width: 8rem;
+  height: 8rem;
+}
+
+.open {
+  opacity: 100;
+}
+
+.close {
+  opacity: 0;
+}
+
+.again-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Merienda", cursive;
+  font-size: 2rem !important ;
+}
+
+.none {
+  display: none;
+}
