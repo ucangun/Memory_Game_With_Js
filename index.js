@@ -1,4 +1,3 @@
-const allImgs = document.querySelectorAll("img");
 const header = document.querySelector(".header");
 const start = document.querySelector(".start");
 const timerDisplay = document.querySelector(".timer");
@@ -32,21 +31,21 @@ images.forEach((src) => {
   const colDiv = document.createElement("div");
   colDiv.className = "col border border-1 border-white p-0";
 
-  // Yeni bir img elementi oluşturma
   const img = document.createElement("img");
   img.src = src;
   img.alt = "";
+  img.className = "close";
 
-  // img elementini col div'inin içine ekleme
   colDiv.appendChild(img);
 
-  // col div'ini row div'inin içine ekleme
   imagesBox.appendChild(colDiv);
 });
+// Select all dynamically added images
+let allImgs = document.querySelectorAll(".row img");
 
 //! Timer
 
-let totalTime = 10; // 3 dakika, 60 saniye * 3 = 180 saniye
+let totalTime = 180; // 3 dakika, 60 saniye * 3 = 180 saniye
 
 const timer = setInterval(() => {
   const minutes = Math.floor(totalTime / 60);
@@ -79,8 +78,6 @@ function toStart() {
   audio.play();
   audio.volume = 0.1;
 }
-
-toStart();
 
 //? Variables
 
