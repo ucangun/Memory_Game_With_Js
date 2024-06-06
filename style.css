@@ -28,7 +28,7 @@ h1 {
 
 @keyframes movement {
   0% {
-    transform: translateX(-800px);
+    transform: translateX(-80px);
   }
   50% {
     transform: translateX(80px);
