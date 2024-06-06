@@ -2,9 +2,16 @@ const header = document.querySelector(".header");
 const start = document.querySelector(".start");
 const timerDisplay = document.querySelector(".timer");
 const score = document.querySelector(".score");
-const again = document.querySelector(".again");
+const again = document.querySelector(".again-box");
 const audio = document.querySelector("#audio");
+const gong = document.querySelector("#gong");
+const win = document.querySelector("#win");
 const imagesBox = document.querySelector(".row");
+
+//? Variables
+let points = 0;
+let activeOne = false;
+let activeTwo = false;
 
 //! Random Images
 // Function to shuffle the images array
@@ -40,12 +47,13 @@ images.forEach((src) => {
 
   imagesBox.appendChild(colDiv);
 });
-// Select all dynamically added images
+
+//******/
 let allImgs = document.querySelectorAll(".row img");
 
 //! Timer
 
-let totalTime = 180; // 3 dakika, 60 saniye * 3 = 180 saniye
+let totalTime = 180; //
 
 const timer = setInterval(() => {
   const minutes = Math.floor(totalTime / 60);
@@ -60,9 +68,14 @@ const timer = setInterval(() => {
 
   timerDisplay.textContent = `Timer : ${displayString}`;
 
-  if (totalTime <= 0) {
+  if (totalTime <= 0 && points !== 10) {
     clearInterval(timer);
-    timerDisplay.textContent = "Süre Bitti!";
+    youLost();
+    tr;
+    timerDisplay.textContent = "Leider ist die Zeit abgelaufen!";
+  } else if (totalTime > 0 && points === 10) {
+    clearInterval(timer);
+    youWin();
   } else {
     totalTime--;
   }
@@ -78,12 +91,6 @@ function toStart() {
   audio.play();
   audio.volume = 0.1;
 }
-
-//? Variables
-
-let points = 0;
-let activeOne = false;
-let activeTwo = false;
 
 //! Start Button
 start.addEventListener("click", () => {
@@ -107,6 +114,7 @@ start.addEventListener("click", () => {
           if (activeOne.src === activeTwo.src) {
             points++;
             score.textContent = points;
+
             activeOne = false;
             activeTwo = false;
           } else {
@@ -123,4 +131,23 @@ start.addEventListener("click", () => {
       }
     });
   });
+});
+
+function youWin() {
+  header.textContent = "Herzlichen Glückwunsch";
+  audio.pause();
+  win.play();
+  win.volume = 0.1;
+}
+
+function youLost() {
+  header.textContent = "Leider hat das nicht geklappt";
+  again.classList.remove("none");
+  audio.pause();
+  gong.play();
+  gong.volume = 0.1;
+}
+
+again.addEventListener("click", () => {
+  window.location.reload();
 });
