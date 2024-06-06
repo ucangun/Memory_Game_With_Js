@@ -7,6 +7,7 @@ const audio = document.querySelector("#audio");
 const gong = document.querySelector("#gong");
 const win = document.querySelector("#win");
 const imagesBox = document.querySelector(".row");
+const domTopScore = document.querySelector(".topScore");
 
 //? Variables
 let points = 0;
@@ -71,7 +72,7 @@ const timer = setInterval(() => {
   if (totalTime <= 0 && points !== 10) {
     clearInterval(timer);
     youLost();
-    tr;
+
     timerDisplay.textContent = "Leider ist die Zeit abgelaufen!";
   } else if (totalTime > 0 && points === 10) {
     clearInterval(timer);
@@ -135,9 +136,11 @@ start.addEventListener("click", () => {
 
 function youWin() {
   header.textContent = "Herzlichen Glückwunsch";
+  again.classList.remove("none");
   audio.pause();
   win.play();
   win.volume = 0.1;
+  updateTopScore();
 }
 
 function youLost() {
@@ -150,4 +153,18 @@ function youLost() {
 
 again.addEventListener("click", () => {
   window.location.reload();
+});
+
+const storedScore = localStorage.getItem("highScore");
+const timerScore = storedScore ? `${storedScore}` : "00 : 00";
+domTopScore.textContent = timerScore;
+
+function updateTopScore() {
+  if (!storedScore || storedScore > +timerDisplay.textContent) {
+    localStorage.setItem("highScore", timerDisplay.textContent);
+  }
+}
+
+domTopScore.addEventListener("dblclick", () => {
+  localStorage.removeItem("highScore");
 });

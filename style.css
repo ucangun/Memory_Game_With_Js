@@ -38,6 +38,12 @@ h1 {
   }
 }
 
+.top-score {
+  font-family: "Merienda", cursive;
+
+  font-size: 1.6rem !important ;
+}
+
 .score-box {
   font-family: "Merienda", cursive;
 
