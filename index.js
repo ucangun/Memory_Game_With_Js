@@ -5,6 +5,44 @@ const timerDisplay = document.querySelector(".timer");
 const score = document.querySelector(".score");
 const again = document.querySelector(".again");
 const audio = document.querySelector("#audio");
+const imagesBox = document.querySelector(".row");
+
+//! Random Images
+// Function to shuffle the images array
+const mixImages = function (arr) {
+  for (let i = arr.length - 1; i >= 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]]; // Swap elements
+  }
+  return arr;
+};
+
+// Created an image array
+let images = [];
+for (let i = 1; i <= 10; i++) {
+  images.push(`./img/img${i}-min.jpg`);
+  images.push(`./img/img${i}-min.jpg`);
+}
+
+//Shuffle the images array
+images = mixImages(images);
+
+//! Images to HTML
+images.forEach((src) => {
+  const colDiv = document.createElement("div");
+  colDiv.className = "col border border-1 border-white p-0";
+
+  // Yeni bir img elementi oluşturma
+  const img = document.createElement("img");
+  img.src = src;
+  img.alt = "";
+
+  // img elementini col div'inin içine ekleme
+  colDiv.appendChild(img);
+
+  // col div'ini row div'inin içine ekleme
+  imagesBox.appendChild(colDiv);
+});
 
 //! Timer
 
@@ -72,23 +110,19 @@ start.addEventListener("click", () => {
           if (activeOne.src === activeTwo.src) {
             points++;
             score.textContent = points;
-            if (points === 10) {
-              header.textContent = "Herzlichen Glückwunsch!";
-            }
+            activeOne = false;
+            activeTwo = false;
           } else {
-            activeOne.classList.remove("open");
-            activeOne.classList.add("close");
-            activeTwo.classList.remove("open");
-            activeTwo.classList.add("close");
+            setTimeout(() => {
+              activeOne.classList.remove("open");
+              activeOne.classList.add("close");
+              activeTwo.classList.remove("open");
+              activeTwo.classList.add("close");
+              activeOne = false;
+              activeTwo = false;
+            }, 1000);
           }
-          activeOne = false;
-          activeTwo = false;
-
-          if (totalTime <= 0 || points !== 10) {
-            again.classList.remove("none");
-            again.classList.add("block");
-          }
-        }, 1000);
+        }, 0);
       }
     });
   });
