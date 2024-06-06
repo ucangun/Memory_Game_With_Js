@@ -54,7 +54,7 @@ let allImgs = document.querySelectorAll(".row img");
 
 //! Timer
 
-let totalTime = 180; //
+let totalTime = 150; //
 
 const timer = setInterval(() => {
   const minutes = Math.floor(totalTime / 60);
