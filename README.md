@@ -7,6 +7,8 @@ The primary objective of this project is to enhance and demonstrate my skills in
 
 ## Project Skeleton
 
+
+```
 (folder)
 
 |----img
@@ -15,7 +17,7 @@ The primary objective of this project is to enhance and demonstrate my skills in
 |----style.css
 |----readme.md
 
-
+```
 
 
 
