@@ -23,6 +23,7 @@ The primary objective of this project is to enhance and demonstrate my skills in
 
 ## Outcome
 
+![Memory Game](https://github.com/ucangun/Memory_Game_With_Js/assets/149247682/a08ace01-af85-4c1c-810e-c5555edbc84f)
 
 
 ## Technologies Used
